@@ -1,0 +1,103 @@
+using System.Threading.Tasks.Sources;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
+using System.Xml.Linq;
+
+namespace weatherapp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var cityName = city.Text;
+            var requestUrl = $"http://api.weatherapi.com/v1/forecast.xml?key=ecdaff50705e449ab6311843250302&q={cityName}&days=1";
+
+            var doc = XDocument.Load(requestUrl);
+
+            string moonPhs = (string)doc.Descendants("moon_phase").FirstOrDefault();
+            string maxT = (string)doc.Descendants("maxtemp_c").FirstOrDefault();
+            string minT = (string)doc.Descendants("mintemp_c").FirstOrDefault();
+            string hum = (string)doc.Descendants("avghumidity").FirstOrDefault();
+            string windSpd = (string)doc.Descendants("wind_kph").FirstOrDefault();
+            string baroPrss = (string)doc.Descendants("pressure_mb").FirstOrDefault();
+
+            moonPhase.Text = moonPhs;
+            maxTemp.Text = maxT;
+            minTemp.Text = minT;
+            humidity.Text = hum;
+            windSpeed.Text = windSpd;
+            atmPressure.Text = baroPrss;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void city_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void atmPressure_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void humidity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void minTemp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maxTemp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
